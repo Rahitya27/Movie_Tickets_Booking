@@ -2,40 +2,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Account Sign In - Movie Ticket Booking</title>
+    <title>TechM Movie World</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background-color: #333545;">
-    <div class="container" style="max-width: 420px; margin-top: 100px;">
-        <div class="movie-card" style="padding: 35px; background: white; border-radius: 12px;">
-            <h2 style="text-align: center; margin-top:0; font-weight:800; color:#333545;">It's Show<span>Time....</span></h2>
-            <p style="text-align: center; font-size: 14px; color: #666; margin-bottom: 30px;">Single portal entry for customers and administrators</p>
+<body style="background: radial-gradient(circle at center, #181922 0%, #0a0a0c 100%);">
+
+    <div class="container" style="max-width: 440px; margin-top: 90px;">
+        <div class="glass-container" style="background: #12131a; border: 1px solid rgba(255, 255, 255, 0.1); padding: 35px; border-radius: 16px;">
             
-            <% if("invalid".equals(request.getParameter("error"))) { %>
-                <p style="color: red; text-align: center; font-size: 14px; font-weight:600;">Incorrect Email or Password!</p>
+            <h2 style="text-align: center; margin-top: 0; font-weight: 800; font-size: 26px; letter-spacing: 0.5px; color: #ffffff;">
+                TechM movie World <span style="color: #ffaa00; text-shadow: 0 0 25px rgba(255, 170, 0, 0.35);">THEATRES</span>
+            </h2>
+            <p style="text-align: center; color: #94a3b8; font-size: 13px; margin-bottom: 35px;">
+                Enter your workspace verification profile details below
+            </p>
+            
+            <% if ("invalid".equals(request.getParameter("error"))) { %>
+                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; padding: 12px; border-radius: 8px; text-align: center; font-size: 13px; margin-bottom: 20px; font-weight:600;">
+                    Invalid security credentials or node mapping error!
+                </div>
+            <% } %>
+            <% if ("success".equals(request.getParameter("signup"))) { %>
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 12px; border-radius: 8px; text-align: center; font-size: 13px; margin-bottom: 20px; font-weight:600;">
+                    Profile initialized successfully! Sign in to continue.
+                </div>
             <% } %>
 
             <form method="POST" action="LoginServlet">
-                <div class="form-group">
-                    <label style="color:#555; font-size:13px; font-weight:600;">Account Email Address</label>
-                    <input type="email" name="email" placeholder="example@cinebook.com" style="background:#fff; color:#333; border: 1px solid #ccc;" required>
+                <div class="form-group-block" style="margin-bottom: 22px;">
+                    <label style="color: #cbd5e0; display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+                        Email Address
+                    </label>
+                    <input type="email" name="email" required placeholder="name@domain.com" 
+                           style="width: 100%; padding: 14px; background: #060608; border: 1px solid rgba(255,255,255,0.07); color: #ffffff; border-radius: 8px; box-sizing: border-box; font-size: 14px;">
                 </div>
-                <div class="form-group" style="margin-top:15px;">
-                    <label style="color:#555; font-size:13px; font-weight:600;">Security Password</label>
-                    <input type="password" name="password" placeholder="••••••••" style="background:#fff; color:#333; border: 1px solid #ccc;" required>
+                
+                <div class="form-group-block" style="margin-bottom: 22px;">
+                    <label style="color: #cbd5e0; display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+                        Password
+                    </label>
+                    <input type="password" name="password" required placeholder="••••••••" 
+                           style="width: 100%; padding: 14px; background: #060608; border: 1px solid rgba(255,255,255,0.07); color: #ffffff; border-radius: 8px; box-sizing: border-box; font-size: 14px;">
                 </div>
-                <button type="submit" class="btn-bms" style="width: 100%; margin-top: 25px; padding: 12px;">Secure Sign In</button>
+                
+                <button type="submit" class="btn-amc-prime" style="width:100%; margin-top: 15px; padding: 14px; color: #000000; font-weight: 700; background: #ffaa00; border: none; border-radius: 8px; cursor: pointer;">
+                    Sign In
+                </button>
             </form>
-            <p style="margin-top: 20px; text-align: center; font-size: 14px; color:#555;">
-    Don't have an account? <a href="register.jsp" style="color: #f84464; font-weight:600; text-decoration:none;">Register here</a>
-</p>
             
-            <div style="margin-top: 20px; background: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 12px; color: #555;">
-                <strong>Demo Logins:</strong><br>
-                • Admin: <code>admin@cinebook.com</code> / <code>admin123</code><br>
-                • Customer: <code>user@cinebook.com</code> / <code>user123</code>
-            </div>
+            <p style="text-align: center; margin-top: 25px; font-size: 14px; color: #94a3b8;">
+                New to TechM Movies? <a href="register.jsp" style="color: #ffaa00; text-decoration: none; font-weight: 600;">Create an account</a>
+            </p>
         </div>
     </div>
+
 </body>
 </html>
