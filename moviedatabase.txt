@@ -1,0 +1,84 @@
+CREATE DATABASE movie_db;
+USE movie_db;
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    movie_name VARCHAR(100) NOT NULL,
+    seats INT NOT NULL
+);USE movie_db;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    role VARCHAR(20) DEFAULT 'USER'
+);
+CREATE TABLE movies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    genre VARCHAR(50),
+    release_date DATE,
+    booking_start DATE,
+    booking_end DATE
+);
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_email VARCHAR(100) NOT NULL,
+    movie_title VARCHAR(100) NOT NULL,
+    seats INT NOT NULL,
+    FOREIGN KEY (user_email) REFERENCES users(email) ON DELETE CASCADE
+);
+INSERT INTO users (email, password, username, role) VALUES 
+('admin@cinebook.com', 'admin123', 'System Admin', 'ADMIN'),
+('user@cinebook.com', 'user123', 'John Doe', 'USER');
+USE movie_db;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS user_profiles;
+DROP TABLE IF EXISTS admin_profiles;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL CHECK (role IN ('USER', 'ADMIN'))
+);
+CREATE TABLE user_profiles (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mobile_number VARCHAR(15) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE admin_profiles (
+    admin_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mobile_number VARCHAR(15) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_email VARCHAR(100) NOT NULL,
+    movie_title VARCHAR(100) NOT NULL,
+    seats INT NOT NULL,
+    FOREIGN KEY (user_email) REFERENCES users(email) ON DELETE CASCADE
+);
+USE movie_db;
+ALTER TABLE movies ADD COLUMN image_url VARCHAR(500) DEFAULT 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';
+select * from admin_profiles;
+select * from users;
+USE movie_db;
+
+-- Clear previous test data remnants to bypass unique key blocks
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE bookings;
+TRUNCATE TABLE user_profiles;
+TRUNCATE TABLE admin_profiles;
+TRUNCATE TABLE users;
+SET FOREIGN_KEY_CHECKS = 1;
+USE movie_db;
+UPDATE movies SET image_url = 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=500' 
+WHERE image_url IS NULL OR image_url = '' OR image_url = 'placeholder';
+TRUNCATE TABLE movies;
+select * from movies;
