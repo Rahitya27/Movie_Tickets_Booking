@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* AMC Premium Brand Tokens */
+    --amc-bg: radial-gradient(circle at center, #181922 0%, #0a0a0c 100%);
+    --amc-panel-bg: #12131a;
+    --amc-gold: #ffaa00;
+    --amc-gold-hover: #ffc44d;
+    --text-main: #ffffff;
+    --text-sub: #94a3b8;
+    --text-label: #cbd5e0;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --glow-amber: 0 0 25px rgba(255, 170, 0, 0.35);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--amc-bg);
+    background-attachment: fixed;
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* AMC Navigation bar */
+.amc-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 19, 26, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 20px 60px;
+    border-bottom: 1px solid var(--border-glass);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.amc-logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.amc-logo span {
+    color: var(--amc-gold);
+    text-shadow: var(--glow-amber);
+}
+
+.amc-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Layout Structural Blueprints */
+.container {
+    max-width: 1240px;
+    margin: 40px auto;
+    padding: 0 25px;
+}
+
+.headline-badge {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 35px;
+    border-left: 5px solid var(--amc-gold);
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+/* Glassmorphic Container Cards */
+.glass-container {
+    background: var(--amc-panel-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* AMC Movie Poster Matrix Grid */
+.amc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 35px;
+}
+
+.movie-card-obsidian {
+    background: var(--amc-panel-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.movie-card-obsidian:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 170, 0, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 170, 0, 0.15);
+}
+
+.poster-viewport {
+    height: 300px;
+    background: #060608;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 22px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.movie-body-panel {
+    padding: 25px;
+}
+
+.movie-title-text {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+/* Premium Form Input Components */
+.form-group-block {
+    margin-bottom: 22px;
+}
+
+.form-group-block label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-label);
+    margin-bottom: 10px;
+}
+
+.form-group-block input, .form-group-block select {
+    width: 100%;
+    padding: 14px;
+    background: #060608;
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.form-group-block input:focus, .form-group-block select:focus {
+    border-color: var(--amc-gold);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 170, 0, 0.15);
+}
+
+/* Action Controls buttons */
+.btn-amc-prime {
+    background: var(--amc-gold);
+    color: #000000;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-amc-prime:hover {
+    background: var(--amc-gold-hover);
+    box-shadow: var(--glow-amber);
+}
+
+/* Visual Seating Hall Canvas Layout Engine */
+.amc-auditorium-canvas {
+    background: var(--amc-panel-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 45px;
+    margin-top: 40px;
+    display: none;
+}
+
+.amc-imax-screen {
+    width: 75%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--amc-gold) 50%, transparent 100%);
+    margin: 0 auto 50px auto;
+    border-radius: 50%;
+    box-shadow: 0 6px 25px rgba(255, 170, 0, 0.5);
+}
+
+.seat-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 38px);
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.seat-matrix-grid input[type="checkbox"] { display: none; }
+.seat-matrix-grid label {
+    background: #232530;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+
+.seat-matrix-grid input[type="checkbox"]:checked + label {
+    background: var(--amc-gold);
+    color: #000000;
+    box-shadow: var(--glow-amber);
+}
+
+/* Split Column Layout Blueprints */
+.amc-split-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.amc-sidebar-form {
+    width: 380px;
+    flex-shrink: 0;
+}
+
+/* Structured Data Information Tables */
+.amc-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--amc-panel-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-glass);
+}
+
+.amc-table th {
+    background: #060608;
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    text-align: left;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.amc-table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border-glass);
+    font-size: 14px;
+}
+
+.badge-pill {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.badge-gold { background: rgba(255,170,0,0.1); color: var(--amc-gold); border: 1px solid rgba(255,170,0,0.2); }
+.badge-muted { background: rgba(255,255,255,0.05); color: var(--text-sub); }
